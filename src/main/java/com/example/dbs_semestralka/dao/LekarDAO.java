@@ -16,9 +16,12 @@ public class LekarDAO extends GenericDAOImpl<Lekar, Integer> {
         List<Long> counts = em.createQuery(
                         "SELECT COUNT(r) FROM RelLekarNavsteva r GROUP BY r.idLekar", Long.class)
                 .getResultList();
+
         double avg = counts.stream()
                 .mapToLong(Long::longValue)
-                .average().orElse(0);
+                .average()
+                .orElse(0);
+        long threshold = (long) Math.ceil(avg);
 
         String jpql =
                 "SELECT new com.example.dbs_semestralka.dto.LekarNavstevyRow(" +
@@ -27,11 +30,11 @@ public class LekarDAO extends GenericDAOImpl<Lekar, Integer> {
                         "FROM RelLekarNavsteva r " +
                         " JOIN r.idLekar l " +
                         "GROUP BY l.id, l.jmeno, l.prijmeni " +
-                        "HAVING COUNT(r) > :avg " +
+                        "HAVING COUNT(r) > :threshold " +
                         "ORDER BY COUNT(r) DESC";
 
         return em.createQuery(jpql, LekarNavstevyRow.class)
-                .setParameter("avg", avg)
+                .setParameter("threshold", threshold)
                 .getResultList();
     }
     public int updateSpecializace(int lekarId, String newSpec) {
