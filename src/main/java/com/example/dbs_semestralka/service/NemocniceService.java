@@ -66,4 +66,12 @@ public class NemocniceService {
     public List<Lekar> getLekariPodleSpecializace(String spec) {
         return lekarDAO.findBySpecialization(spec);
     }
+    public Pacient najdiPacienta(int id) {
+        return pacientDAO.findById(id);
+    }
+
+    /** Pomocná metoda: najdi návštěvu podle ID */
+    public Navsteva najdiNavstevu(int id) {
+        return navstevaDAO.findById(id);
+    }
 }

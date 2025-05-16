@@ -6,4 +6,6 @@ module com.example.dbs_semestralka {
 
     opens com.example.dbs_semestralka to javafx.fxml;
     exports com.example.dbs_semestralka;
+
+    opens com.example.dbs_semestralka.controllers to javafx.fxml;
 }

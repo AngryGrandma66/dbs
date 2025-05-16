@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dbs_semestralka.controllers.AktualizaceController"
+      alignment="CENTER" spacing="10">
+    <Label text="Aktualizuje se lékař ID 1 a diagnóza pacienta ID 5."/>
+    <Button text="Provést aktualizaci"
+            onAction="#handleAktualizace"/>
+</VBox>

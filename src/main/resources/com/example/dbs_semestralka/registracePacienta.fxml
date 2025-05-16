@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.dbs_semestralka.controllers.RegistracePacientaController"
+          hgap="10" vgap="10" alignment="CENTER">
+    <Label text="Jméno:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="jmenoField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Příjmení:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="prijmeniField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Datum narození:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <DatePicker fx:id="datumNarozeniPicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Adresa:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="adresaField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Telefon:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="telefonField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Číslo pojištěnce:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField fx:id="cisloPojistenceField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="Rodné číslo:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="rodneCisloField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Button text="Registrovat pacienta"
+            onAction="#handleRegistracePacienta"
+            GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+</GridPane>

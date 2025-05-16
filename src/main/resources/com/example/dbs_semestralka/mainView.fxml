@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+  <BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.dbs_semestralka.MainController">
+    <top>
+      <MenuBar>
+        <Menu text="Navigace">
+          <MenuItem text="Registrace pacienta" onAction="#showRegistracePacienta"/>
+          <MenuItem text="Nová návštěva" onAction="#showNovaNavsteva"/>
+          <MenuItem text="Přiřazení lékaře" onAction="#showPrirazeniLekare"/>
+          <MenuItem text="Aktualizace" onAction="#showAktualizace"/>
+          <MenuItem text="Recept" onAction="#showRecept"/>
+        </Menu>
+      </MenuBar>
+    </top>
+    <center>
+      <!-- Dynamic content will be loaded here -->
+    </center>
+  </BorderPane>
