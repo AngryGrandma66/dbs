@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
   <BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.dbs_semestralka.MainController">
@@ -13,6 +12,13 @@
           <MenuItem text="Aktualizace" onAction="#showAktualizace"/>
           <MenuItem text="Recept" onAction="#showRecept"/>
           <MenuItem text="Pacienti a návštěvy" onAction="#showPacientiNavstevy"/>
+          <MenuItem text="Kontrolní návštěvy" onAction="#showKontrolniNavstevy"/>
+          <MenuItem text="Pacienti s ≥2 návštěvami" onAction="#showPacientiSMinNavstev"/>
+          <MenuItem text="10 nejnovějších receptů" onAction="#showReceptyNejnovjsi"/>
+          <MenuItem text="Pacienti 2025 (diag./návštěvy)" onAction="#showPacientiRok2025"/>
+          <MenuItem text="Lékaři nad průměrem" onAction="#showLekariNavstevy"/>
+          <MenuItem text="Diagnózy kardiologie" onAction="#showPacientiKardiologie"/>
+
         </Menu>
       </MenuBar>
     </top>

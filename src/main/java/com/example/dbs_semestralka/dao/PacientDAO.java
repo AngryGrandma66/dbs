@@ -1,9 +1,10 @@
 package com.example.dbs_semestralka.dao;
 
+import com.example.dbs_semestralka.dto.PacientNavstevCountRow;
+import com.example.dbs_semestralka.dto.PacientRokRow;
 import com.example.dbs_semestralka.model.Pacient;
 import jakarta.persistence.TypedQuery;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
 public class PacientDAO extends GenericDAOImpl<Pacient, Integer> {
@@ -11,23 +12,44 @@ public class PacientDAO extends GenericDAOImpl<Pacient, Integer> {
         super(Pacient.class);
     }
 
-    /**
-     * Parametrizovaný dotaz: najde pacienta podle čísla pojištěnce
-     */
-    public Pacient findByCisloPojistence(String cislo) {
-        TypedQuery<Pacient> q = em.createQuery(
-                "SELECT p FROM Pacient p WHERE p.cisloPojistence = :cislo", Pacient.class);
-        q.setParameter("cislo", cislo);
-        return q.getResultStream().findFirst().orElse(null);
-    }
-    /**
-     * Vrátí seznam pacientů narozených mezi dvěma daty
-     */
-    public List<Pacient> findByBirthDateRange(OffsetDateTime from, OffsetDateTime to) {
-        TypedQuery<Pacient> q = em.createQuery(
-                "SELECT p FROM Pacient p WHERE p.datumNarozeni BETWEEN :from AND :to", Pacient.class);
-        q.setParameter("from", from.toLocalDate());
-        q.setParameter("to", to.toLocalDate());
+
+    public List<PacientNavstevCountRow> findPacientiWithMinNavstev(long minNavstev) {
+        String jpql =
+                "SELECT new com.example.dbs_semestralka.dto.PacientNavstevCountRow(" +
+                        "   p.jmeno, p.prijmeni, COUNT(n) " +
+                        ") " +
+                        "FROM Pacient p " +
+                        "   LEFT JOIN p.navstevy n " +
+                        "GROUP BY p.id, p.jmeno, p.prijmeni " +
+                        "HAVING COUNT(n) >= :minNavstev " +
+                        "ORDER BY COUNT(n) DESC";
+
+        TypedQuery<PacientNavstevCountRow> q = em.createQuery(jpql, PacientNavstevCountRow.class);
+        q.setParameter("minNavstev", minNavstev);
         return q.getResultList();
+    }
+
+
+
+    public List<PacientRokRow> findPacientiByYear(int year) {
+        String jpql =
+                "SELECT DISTINCT new com.example.dbs_semestralka.dto.PacientRokRow(" +
+                        "   p.jmeno, p.prijmeni, p.cisloPojistence" +
+                        ") " +
+                        "FROM Pacient p " +
+                        "WHERE EXISTS (" +
+                        "    SELECT 1 FROM Diagnoza d " +
+                        "    WHERE d.idPacient = p AND YEAR(d.datum) = :year" +
+                        ") " +
+                        "OR EXISTS (" +
+                        "    SELECT 1 FROM Navsteva n " +
+                        "    WHERE n.idPacient  = p AND YEAR(n.datum) = :year" +
+                        ") " +
+                        "ORDER BY p.prijmeni, p.jmeno";
+
+        return em.createQuery(jpql, PacientRokRow.class)
+                .setParameter("year", year)
+                .getResultList();
+
     }
 }

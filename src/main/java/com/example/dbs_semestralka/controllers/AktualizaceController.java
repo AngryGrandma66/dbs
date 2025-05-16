@@ -10,6 +10,6 @@ public class AktualizaceController {
 
     @FXML
     private void handleAktualizace() {
-        service.aktualizujLekareADiagnostiku();
+        service.aktualizujLekareADiagnostikuTransactional();
     }
 }

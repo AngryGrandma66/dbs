@@ -1,6 +1,5 @@
 package com.example.dbs_semestralka;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -49,5 +48,29 @@ public class MainController {
     @FXML
     public void showPacientiNavstevy() {
         loadCenter("/com/example/dbs_semestralka/pacientiNavstevy.fxml");
+    }
+    @FXML
+    private void showKontrolniNavstevy() {
+        loadCenter("/com/example/dbs_semestralka/kontrolaNavstev.fxml");
+    }
+    @FXML
+    private void showPacientiSMinNavstev() {
+        loadCenter("/com/example/dbs_semestralka/pacientiSMinNavstev.fxml");
+    }
+    @FXML
+    private void showReceptyNejnovjsi() {
+        loadCenter("/com/example/dbs_semestralka/receptyNejnovjsi.fxml");
+    }
+    @FXML
+    private void showPacientiRok2025() {
+        loadCenter("/com/example/dbs_semestralka/pacientiRok2025.fxml");
+    }
+    @FXML private void showLekariNavstevy() {
+        loadCenter("/com/example/dbs_semestralka/lekariNavstevy.fxml");
+    }
+
+    @FXML
+    private void showPacientiKardiologie() {
+        loadCenter("/com/example/dbs_semestralka/pacientiKardiologie.fxml");
     }
 }

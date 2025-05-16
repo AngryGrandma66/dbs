@@ -11,6 +11,11 @@ public abstract class GenericDAOImpl<T, ID> implements GenericDAO<T, ID> {
         this.clazz = clazz;
         this.em = JPAUtil.createEntityManager();
     }
+    public GenericDAOImpl(Class<T> clazz, EntityManager em) {
+        this.clazz = clazz;
+        this.em = em;
+    }
+
 
     @Override
     public void persist(T entity) {
