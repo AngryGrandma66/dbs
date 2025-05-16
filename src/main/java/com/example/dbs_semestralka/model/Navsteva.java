@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "\"Navsteva\"")
@@ -29,6 +31,21 @@ public class Navsteva {
     @Column(name = "cas_upravy")
     private Instant casUpravy;
 
+
+    @ManyToMany
+    @JoinTable(
+            name = "\"Rel_lekar_navsteva\"",
+            joinColumns = @JoinColumn(name = "id_navsteva"),
+            inverseJoinColumns = @JoinColumn(name = "id_lekar")
+    )
+    private Set<Lekar> lekari = new HashSet<>();
+
+    public Set<Lekar> getLekari() {
+        return lekari;
+    }
+    public void setLekari(Set<Lekar> lekari) {
+        this.lekari = lekari;
+    }
     public Integer getId() {
         return id;
     }
