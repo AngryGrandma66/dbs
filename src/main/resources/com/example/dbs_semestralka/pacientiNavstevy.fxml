@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.dbs_semestralka.controllers.PacientiNavstevyController">
+    <center>
+        <TableView fx:id="table">
+            <columns>
+                <TableColumn text="Jméno"       fx:id="colJmeno"/>
+                <TableColumn text="Příjmení"    fx:id="colPrijmeni"/>
+                <TableColumn text="Narození"     fx:id="colDatum"/>
+                <TableColumn text="ID Návštěvy" fx:id="colNavId"/>
+                <TableColumn text="Datum"       fx:id="colNavDatum"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

@@ -1,8 +1,10 @@
 package com.example.dbs_semestralka.service;
 
 import com.example.dbs_semestralka.dao.*;
+import com.example.dbs_semestralka.dto.PacientiNavstevyRow;
 import com.example.dbs_semestralka.model.*;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -73,5 +75,8 @@ public class NemocniceService {
     /** Pomocná metoda: najdi návštěvu podle ID */
     public Navsteva najdiNavstevu(int id) {
         return navstevaDAO.findById(id);
+    }
+    public List<PacientiNavstevyRow> getPacientiNavstevy(LocalDate after) {
+        return navstevaDAO.findPacientiNavstevy(after);
     }
 }

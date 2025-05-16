@@ -1,10 +1,10 @@
 package com.example.dbs_semestralka.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "\"Pacient\"")
@@ -16,7 +16,11 @@ public class Pacient extends Osoba {
     @Column(name = "rodne_cislo", length = 11)
     private String rodneCislo;
 
+    @OneToMany(mappedBy = "idPacient", fetch = FetchType.LAZY)
+    private Set<Navsteva> navstevy = new HashSet<>();
 
+    public Set<Navsteva> getNavstevy() { return navstevy; }
+    public void setNavstevy(Set<Navsteva> navstevy) { this.navstevy = navstevy; }
     public String getCisloPojistence() {
         return cisloPojistence;
     }

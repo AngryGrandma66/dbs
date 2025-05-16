@@ -1,7 +1,10 @@
 package com.example.dbs_semestralka.dao;
 
+import com.example.dbs_semestralka.dto.PacientiNavstevyRow;
 import com.example.dbs_semestralka.model.Navsteva;
 import jakarta.persistence.TypedQuery;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.time.OffsetDateTime;
 
@@ -29,5 +32,18 @@ public class NavstevaDAO extends GenericDAOImpl<Navsteva, Integer> {
         q.setParameter("start", start);
         q.setParameter("end", end);
         return q.getResultList();
+    }
+    public List<PacientiNavstevyRow> findPacientiNavstevy(LocalDate after) {
+        String jpql =
+                "SELECT new com.example.dbs_semestralka.dto.PacientiNavstevyRow(" +
+                        "   p.jmeno, p.prijmeni, p.datumNarozeni, n.id, n.datum" +
+                        ") " +
+                        "FROM Pacient p " +
+                        "LEFT JOIN p.navstevy n " +
+                        "WHERE p.datumNarozeni > :after";
+
+        return em.createQuery(jpql, PacientiNavstevyRow.class)
+                .setParameter("after", after)
+                .getResultList();
     }
 }

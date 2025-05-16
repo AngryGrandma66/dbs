@@ -1,5 +1,6 @@
 package com.example.dbs_semestralka;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -44,5 +45,9 @@ public class MainController {
     @FXML
     private void showRecept() {
         loadCenter("/com/example/dbs_semestralka/recept.fxml");
+    }
+    @FXML
+    public void showPacientiNavstevy() {
+        loadCenter("/com/example/dbs_semestralka/pacientiNavstevy.fxml");
     }
 }

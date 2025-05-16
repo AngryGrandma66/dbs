@@ -12,6 +12,7 @@
           <MenuItem text="Přiřazení lékaře" onAction="#showPrirazeniLekare"/>
           <MenuItem text="Aktualizace" onAction="#showAktualizace"/>
           <MenuItem text="Recept" onAction="#showRecept"/>
+          <MenuItem text="Pacienti a návštěvy" onAction="#showPacientiNavstevy"/>
         </Menu>
       </MenuBar>
     </top>
