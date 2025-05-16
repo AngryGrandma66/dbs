@@ -6,6 +6,7 @@ import java.time.LocalDate;
 @MappedSuperclass
 public abstract class Osoba {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     protected Integer id;
 
